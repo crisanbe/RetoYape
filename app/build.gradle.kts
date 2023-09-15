@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.retolistaderecetas"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -48,104 +48,79 @@ android {
     tasks.withType<JavaCompile> {
         options.compilerArgs.addAll(listOf("-source", "1.8", "-target",  "1.8"))
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/ASM")
-    }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
-            isReturnDefaultValues = true
         }
     }
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material:material")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
-
     //map
     implementation("com.google.maps.android:maps-compose:2.11.4")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
 
-    // Compose dependencies
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0-alpha02")
-    implementation("androidx.navigation:navigation-compose:2.7.2")
-    implementation("io.coil-kt:coil-compose:2.2.2")
-    implementation("androidx.compose.material:material-icons-extended:1.5.1")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
-
-    // Room
-    implementation("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
-
-    // Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:2.5.2")
-
-    //Dagger - Hilt
-    implementation(DaggerHilt.hiltAndroid)
-    kapt(DaggerHilt.hiltCompiler)
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
     //Test
+    implementation(Compose.compiler)
+    implementation(Compose.ui)
+    implementation(Compose.lifecycleCompose)
+    implementation(Compose.uiToolingPreview)
+    implementation(Compose.hiltNavigationCompose)
+    implementation(Compose.material_3)
+    implementation(Compose.runtime)
+    implementation(Compose.navigation)
+    implementation(Compose.viewModelCompose)
+    implementation(Compose.activityCompose)
+    implementation(Compose.pagingCompose)
+    implementation(Compose.pagingIndicatorCompose)
+    implementation(Compose.constraintLayoutCompose)
+    implementation(DaggerHilt.hiltAndroid)
+    implementation("androidx.compose.material:material-icons-extended:1.5.1")
+    implementation(Coil.coilCompose)
+    implementation(Coil.coilSvg)
+
+    implementation(Retrofit.okHttp)
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.okHttpLoggingInterceptor)
+    implementation(Retrofit.gsonConverter)
+    implementation(Gson.gson)
+    implementation(Room.roomKtx)
+    implementation(Room.roomRuntime)
+    kapt(Room.roomCompiler)
+
+    kapt(DaggerHilt.hiltCompiler)
+    debugImplementation(Compose.uiTooling)
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)
-    testImplementation (Testing.robolectricTest)
     testImplementation(Testing.truth)
     testImplementation(Testing.coroutines)
+    testImplementation(Testing.testCorutinesCore)
     testImplementation(Testing.turbine)
     testImplementation(Testing.mockk)
-    testImplementation(Testing.mockWebServer)
-    testImplementation(Testing.testCore)
     testImplementation(Testing.mockito)
-    testImplementation ("android.arch.core:core-testing:1.1.1")
-    testImplementation(Testing.dexmakerMockito)
-
+    testImplementation(Testing.testMockitoOnlineVersion)
+    testImplementation(Testing.mockWebServer)
+    testImplementation(Testing.testArchCoreTesting)
+    testImplementation(Testing.testHamcrest)
+    testImplementation(Testing.testCoreKtx)
+    testImplementation(Testing.testExtJunitKtx)
+    testImplementation(Testing.daggerHiltRobolectricTest)
+    kaptTest(Testing.robolectricDaggerHiltCompileTest)
+    coreLibraryDesugaring(Testing.coreLibrary)
     androidTestImplementation(Testing.junit4)
     androidTestImplementation(Testing.junitAndroidExt)
     androidTestImplementation(Testing.truth)
     androidTestImplementation(Testing.coroutines)
     androidTestImplementation(Testing.turbine)
-    androidTestImplementation(Testing.mockkAndroid)
+    androidTestImplementation(Testing.mockk)
     androidTestImplementation(Testing.mockWebServer)
     androidTestImplementation(Testing.hiltTesting)
-    androidTestImplementation(Testing.testRunner)
-    androidTestImplementation(Testing.testCore)
-    androidTestImplementation(Testing.dexmakerMockito)
-    kaptAndroidTest(DaggerHilt.hiltCompiler)
 }
