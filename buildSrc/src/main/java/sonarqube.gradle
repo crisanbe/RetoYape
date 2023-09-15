@@ -10,7 +10,6 @@ def androidCoverageExclusion = [
         '**/manifests/**',
         "**/**/src/main/*Manifest.*",
         '**/*Module_*Factory.*',
-        '**/core-ui/**',
         '**/**/di/**',
         '**/app/src/main/res/**'
 ]
@@ -25,8 +24,6 @@ def androidCodeExclusion = [
         '**/manifests/**',
         '**/**/manifests/**',
         "**/**/src/main/*Manifest.*",
-        '**/mockserver/**',
-        '**/core-ui/**',
         '**/**/di/**',
         '**/app/src/main/res/**'
 ]
@@ -41,7 +38,9 @@ sonarqube {
         property "sonar.projectName", "RetoListaDeRecetas"
         property "sonar.sources", "src/main/java"
         property "sonar.tests", "src/test/java"
+        property "sonar.coverage.exclusions", androidCoverageExclusion.join(",")
+        property "sonar.exclusions", androidCodeExclusion.join(",")
+        property "sonar.tags", "android"
     }
 }
 tasks.sonarqube.dependsOn(":clean")
-tasks.sonarqube.dependsOn(":koverMergedReport")

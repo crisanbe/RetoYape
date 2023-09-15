@@ -36,7 +36,6 @@ class HomeViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UIEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
     var state by mutableStateOf(HomeState(isLoading = true))
-        private set
 
     init {
         getListRecipe(increase = false)
