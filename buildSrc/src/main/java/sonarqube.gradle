@@ -1,0 +1,47 @@
+apply plugin: 'org.sonarqube'
+//sonar.coverage.exclusions: se refiere especificamente a la cobertura de codigo
+def androidCoverageExclusion = [
+        '**/databinding/**/*.*',
+        '**/android/databinding/*Binding.*',
+        '**/BR.*',
+        '**/R.*',
+        '**/R$*.*',
+        '**/BuildConfig.*',
+        '**/manifests/**',
+        "**/**/src/main/*Manifest.*",
+        '**/*Module_*Factory.*',
+        '**/core-ui/**',
+        '**/**/di/**',
+        '**/app/src/main/res/**'
+]
+//sonar.exclusions: abarca exclusiones mas generales en el analisis de sonarqube (Terminos de codigo, reglas de calidad)
+def androidCodeExclusion = [
+        '**/databinding/**/*.*',
+        '**/android/databinding/*Binding.*',
+        '**/BR.*',
+        '**/R.*',
+        '**/R$*.*',
+        '**/BuildConfig.*',
+        '**/manifests/**',
+        '**/**/manifests/**',
+        "**/**/src/main/*Manifest.*",
+        '**/mockserver/**',
+        '**/core-ui/**',
+        '**/**/di/**',
+        '**/app/src/main/res/**'
+]
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://localhost:9000/"
+        property "sonar.login", "admin"
+        property "sonar.password", "Admin"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.projectKey", "retoyape"
+        property "sonar.projectName", "RetoListaDeRecetas"
+        property "sonar.sources", "src/main/java"
+        property "sonar.tests", "src/test/java"
+    }
+}
+tasks.sonarqube.dependsOn(":clean")
+tasks.sonarqube.dependsOn(":koverMergedReport")

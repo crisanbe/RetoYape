@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RetoListaDeRecetas</string>
+    <!--  HomeScreen  -->
+    <string name="home_title">Recetas</string>
+    <string name="previous_button">Anterior</string>
+    <string name="next_button">Siguiente</string>
+
+    <!-- DetailScreen   -->
+    <string name="location">location:</string>
+    <string name="name">Nombre:</string>
+    <string name="description">Descripcion:</string>
+    <string name="gender">Gender:</string>
+</resources>
