@@ -16,7 +16,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -48,17 +47,26 @@ android {
     tasks.withType<JavaCompile> {
         options.compilerArgs.addAll(listOf("-source", "1.8", "-target",  "1.8"))
     }
-
     buildFeatures {
         compose = true
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
     }
 
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+        exclude("**/attach_hotspot_windows.dll")
+        exclude("META-INF/licenses/ASM")
+    }
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
+            unitTests.isReturnDefaultValues = true
         }
     }
 }

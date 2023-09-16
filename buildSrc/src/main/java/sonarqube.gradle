@@ -36,6 +36,7 @@ sonarqube {
         property "sonar.projectKey", "retoyape"
         property "sonar.projectName", "RetoListaDeRecetas"
         property "sonar.sources", "src/main/java"
+        property "sonar.java.source", "src/main/java"
         property "sonar.tests", "src/test/java"
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.coverage.exclusions", androidCoverageExclusion.join(",")
