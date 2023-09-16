@@ -1,7 +1,6 @@
 object Testing {
     private const val junitVersion = "4.13.2"
     private const val junitAndroidExtVersion = "1.1.5"
-    private const val robolectricVersion = "4.9.2"
     private const val coroutinesTestVersion = "1.6.0"
     private const val truthVersion = "1.1.3"
     private const val mockkVersion = "1.12.4"
@@ -23,8 +22,6 @@ object Testing {
     private const val testCoreKtxVersion = "1.5.0"
     private const val testMockitoCoreVersion = "5.1.1"
     private const val testCorutinesCoreVersion = "1.6.4"
-    private const val testDaggerHiltRobolectricVersion = "2.44"
-    private const val testRobolectricDaggerHiltCompileVersion = "2.44"
 
     private const val jacocoVersion = "0.8.8"
     private const val sonarVersion = "3.5.0.2730"
@@ -33,9 +30,6 @@ object Testing {
 
     const val junit4 = "junit:junit:$junitVersion"
     const val junitAndroidExt = "androidx.test.ext:junit-ktx:$junitAndroidExtVersion"
-    const val robolectricTest = "org.robolectric:robolectric:$robolectricVersion"
-    const val daggerHiltRobolectricTest = "com.google.dagger:hilt-android-testing:$testDaggerHiltRobolectricVersion"
-    const val robolectricDaggerHiltCompileTest = "com.google.dagger:hilt-android-compiler:$testRobolectricDaggerHiltCompileVersion"
     const val testMockitoOnlineVersion = "org.mockito:mockito-inline:$testMockitoCoreVersion"
     const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"

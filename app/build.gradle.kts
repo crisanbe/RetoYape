@@ -73,10 +73,10 @@ android {
 
 dependencies {
     //map
-    implementation("com.google.maps.android:maps-compose:2.11.4")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
-
-    //Test
+    implementation(Google.playMervicesMaps)
+    implementation(Google.mapsMompose)
+    implementation(Compose.material_icons_extended)
+    //Compose
     implementation(Compose.compiler)
     implementation(Compose.ui)
     implementation(Compose.lifecycleCompose)
@@ -91,19 +91,20 @@ dependencies {
     implementation(Compose.pagingIndicatorCompose)
     implementation(Compose.constraintLayoutCompose)
     implementation(DaggerHilt.hiltAndroid)
-    implementation("androidx.compose.material:material-icons-extended:1.5.1")
+    //Coil
     implementation(Coil.coilCompose)
     implementation(Coil.coilSvg)
-
+    //Retrofit
     implementation(Retrofit.okHttp)
     implementation(Retrofit.retrofit)
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.gsonConverter)
     implementation(Gson.gson)
+    //Room
     implementation(Room.roomKtx)
     implementation(Room.roomRuntime)
     kapt(Room.roomCompiler)
-
+    //Test
     kapt(DaggerHilt.hiltCompiler)
     debugImplementation(Compose.uiTooling)
     testImplementation(Testing.junit4)
@@ -120,8 +121,6 @@ dependencies {
     testImplementation(Testing.testHamcrest)
     testImplementation(Testing.testCoreKtx)
     testImplementation(Testing.testExtJunitKtx)
-    testImplementation(Testing.daggerHiltRobolectricTest)
-    kaptTest(Testing.robolectricDaggerHiltCompileTest)
     coreLibraryDesugaring(Testing.coreLibrary)
     androidTestImplementation(Testing.junit4)
     androidTestImplementation(Testing.junitAndroidExt)
