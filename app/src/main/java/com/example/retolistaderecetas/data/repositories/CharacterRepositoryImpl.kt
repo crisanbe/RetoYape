@@ -28,24 +28,17 @@ class CharacterRepositoryImpl @Inject constructor(
     private val apiRecipeMapper: RecipesMapper
 ): RecipeRepository {
 
-    override fun getListRecipe(page: Int): Flow<Result<List<Recipes>>> = flow{
-        emit(Result.Loading())
-        try {
-            val response = api.getRecipes(page).toListCharacters()
-            emit(Result.Success(response))
+    override suspend fun getListRecipe(page: Int): Results<List<Recipes>> {
+
+        val response = try {
+            api.getRecipes(page).toListCharacters()
+
         } catch (e: HttpException) {
-            emit(
-                Result.Error(
-                message = "Oops, something went wrong",
-                data = null
-            ))
+            return Results.Error(ErrorEntity.ApiError.UnKnown)
         } catch (e: IOException) {
-            emit(
-                Result.Error(
-                message = "Couldn't reach server, check your internet connection",
-                data = null
-            ))
+            return Results.Error(ErrorEntity.ApiError.NotFound)
         }
+        return Results.Success(response)
     }
 
     override fun getRecipes(input: String, limit: Int, offset: Int): Flow<List<Recipes>> = flow {

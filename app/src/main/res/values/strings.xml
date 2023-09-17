@@ -10,4 +10,8 @@
     <string name="name">Nombre:</string>
     <string name="description">Descripcion:</string>
     <string name="gender">Gender:</string>
+
+    <string name="recipe">La receta debe tener al menos %d caracteres</string>
+
+
 </resources>

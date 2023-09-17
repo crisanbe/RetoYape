@@ -1,6 +1,6 @@
 package com.example.retolistaderecetas.util
 
-const val BASE_URL = "https://demo7101725.mockable.io/api/"
+var BASE_URL = "https://demo7101725.mockable.io/api/"
 
 const val DB_NAME = "recipe_db"
 const val RECIPE_ENDPOINT = "recipe/"

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RecipeRepository {
 
-    fun getListRecipe(page: Int): Flow<Result<List<Recipes>>>
+    suspend fun getListRecipe(page: Int): Results<List<Recipes>>
 
     fun getRecipes(input: String, limit: Int, offset: Int): Flow<List<Recipes>>
 
