@@ -14,7 +14,7 @@ Proyecto
 1. UIEvent
 	- Simpler
 1. Hilt
-   1.Room 	- Para persistir los datos en el Dispositivo al realizar una consulta
+1. Room - Para persistir los datos en el Dispositivo al realizar una consulta
 1. Navigation Compose
 1. Retrofit
 1. Custom Fonts
@@ -22,7 +22,7 @@ Proyecto
 
 # Funciones de composición
 1. Snackbars
-3. Theming
+3. Theming /Modo Oscuro
 4. Fonts
 5. Colors
 	- creating
