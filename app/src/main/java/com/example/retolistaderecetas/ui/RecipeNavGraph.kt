@@ -1,6 +1,7 @@
 package com.example.retolistaderecetas.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -20,6 +21,7 @@ fun RecipeNavGraph(
     navigateToHome: () -> Unit,
     navigateToMap: (Double, Double) -> Unit,
     navigateToDetail: (Int) -> Unit,
+    darkMode: MutableState<Boolean>,
     navController: NavHostController = rememberNavController(),
     startDestination: String = Screen.Home.route
 ) {
@@ -31,6 +33,7 @@ fun RecipeNavGraph(
     ) {
         composable(route = Screen.Home.route) {
             HomeScreen(
+                darkMode = darkMode,
                 onItemClicked = { navigateToDetail(it) }
             )
         }

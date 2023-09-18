@@ -32,10 +32,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Brightness7
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -65,7 +69,8 @@ import kotlinx.coroutines.flow.collectLatest
 @Composable
 fun HomeScreen(
     onItemClicked: (Int) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    darkMode: MutableState<Boolean>
 ) {
 
     val state = viewModel.state
@@ -87,7 +92,7 @@ fun HomeScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            HomeTopBar()
+            HomeTopBar(darkMode = darkMode)
         },
         bottomBar = {
             HomeBottomBar(
@@ -120,9 +125,18 @@ fun HomeScreen(
 
 @Composable
 private fun HomeTopBar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    darkMode: MutableState<Boolean>
 ) {
     TopAppBar(
+        actions = {
+            IconButton(onClick = { darkMode.value = !darkMode.value }) {
+                Icon(
+                    imageVector = if (darkMode.value) Icons.Default.DarkMode else Icons.Default.LightMode,
+                    contentDescription = if (darkMode.value) "Modo Claro" else "Modo Oscuro",
+                )
+            }
+        },
         title = {
             Text(
                 text = "${stringResource(id = R.string.home_title)} 🥗",
@@ -131,8 +145,7 @@ private fun HomeTopBar(
                     .fillMaxSize()
                     .wrapContentSize(Alignment.Center)
             )
-        },
-        backgroundColor = MaterialTheme.colors.surface
+        }
     )
 }
 

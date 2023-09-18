@@ -74,6 +74,7 @@ android {
 dependencies {
     //map
     implementation(Google.playMervicesMaps)
+    implementation(Google.systemuicontroller)
     implementation(Google.mapsMompose)
     implementation(Compose.material_icons_extended)
     //Compose
